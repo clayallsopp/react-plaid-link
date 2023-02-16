@@ -29,11 +29,15 @@ export type PlaidWeb3OnSuccess = (
   metadata: PlaidWeb3OnSuccessMetadata
 ) => void;
 
-export interface EthereumOnboardingOptions
-  extends CommonPlaidLinkOptions<PlaidWeb3OnSuccess> {
+export interface Web3OnboardingOptions {
   token: string | null;
   chain: ChainOption;
 }
+
+export type EthereumOnboardingOptions = CommonPlaidLinkOptions<
+  PlaidWeb3OnSuccess
+> &
+  Web3OnboardingOptions;
 
 export interface PlaidWeb3 {
   createEthereumOnboarding: (config: EthereumOnboardingOptions) => PlaidHandler;
